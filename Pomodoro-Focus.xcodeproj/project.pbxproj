@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E8BEF62C2F2D37CD003E6B03 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = E8BEF62B2F2D37CD003E6B03 /* ReceiptParser */; };
+		E8BEF62E2F2D37CD003E6B03 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = E8BEF62D2F2D37CD003E6B03 /* RevenueCat */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E8BEF6042F2D34AF003E6B03 /* Pomodoro-Focus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pomodoro-Focus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8BEF62E2F2D37CD003E6B03 /* RevenueCat in Frameworks */,
+				E8BEF62C2F2D37CD003E6B03 /* ReceiptParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = "Pomodoro-Focus";
 			packageProductDependencies = (
+				E8BEF62B2F2D37CD003E6B03 /* ReceiptParser */,
+				E8BEF62D2F2D37CD003E6B03 /* RevenueCat */,
 			);
 			productName = "Pomodoro-Focus";
 			productReference = E8BEF6042F2D34AF003E6B03 /* Pomodoro-Focus.app */;
@@ -94,6 +103,9 @@
 			);
 			mainGroup = E8BEF5FB2F2D34AF003E6B03;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E8BEF62A2F2D37CD003E6B03 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E8BEF6052F2D34AF003E6B03 /* Products */;
 			projectDirPath = "";
@@ -332,6 +344,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E8BEF62A2F2D37CD003E6B03 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.56.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E8BEF62B2F2D37CD003E6B03 /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8BEF62A2F2D37CD003E6B03 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = ReceiptParser;
+		};
+		E8BEF62D2F2D37CD003E6B03 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8BEF62A2F2D37CD003E6B03 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E8BEF5FC2F2D34AF003E6B03 /* Project object */;
 }
