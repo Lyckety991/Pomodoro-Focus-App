@@ -33,6 +33,14 @@ class TimerService: ObservableObject {
         timerState = .running
         startTime = Date()
         
+        /// Shared Service um den Screen an zu behalten bei Nutzung des Timers
+        
+        if UserDefaultsManager.shared.keepScreenAwake{
+            ScreenWakeService.shared.keepScreenAwake()
+            
+        }
+        
+        
         startBackgroundTask()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
@@ -48,6 +56,8 @@ class TimerService: ObservableObject {
         timerState = .paused
         timer?.invalidate()
         timer = nil
+        ///Wen der Timer beendet ist geht der Screen wieder aus.
+        ScreenWakeService.shared.allowScreenSleep()
         
         endBackgroundTask()
     }
@@ -63,6 +73,9 @@ class TimerService: ObservableObject {
         timerState = .idle
         timeRemaining = currentMode.defaultDuration * 60
         totalDuration = timeRemaining
+        
+        /// Bei Reset darf der Bildschrim sich wieder ausschalten.
+        ScreenWakeService.shared.allowScreenSleep()
         
         endBackgroundTask()
     }
@@ -101,6 +114,8 @@ class TimerService: ObservableObject {
         
         // Play sound
         AudioService.shared.playCompletionSound()
+        
+        ScreenWakeService.shared.allowScreenSleep()
         
         endBackgroundTask()
         
@@ -170,5 +185,9 @@ class TimerService: ObservableObject {
         let minutes = timeRemaining / 60
         let seconds = timeRemaining % 60
         return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    deinit {
+        ScreenWakeService.shared.allowScreenSleep()
     }
 }

@@ -59,4 +59,8 @@ class UserDefaultsManager {
     // Premium
     @UserDefault(key: "isPremium", defaultValue: false)
     var isPremium: Bool
+    
+    // Keep Screen Awake or Sleep
+    @UserDefault(key: "keepScreenAwake", defaultValue: true)
+    var keepScreenAwake: Bool
 }

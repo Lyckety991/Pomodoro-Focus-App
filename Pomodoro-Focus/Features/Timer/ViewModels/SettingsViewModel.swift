@@ -25,6 +25,8 @@ class SettingsViewModel: ObservableObject {
     @Published var showPaywall = false
     @Published var showAbout = false
     
+    @Published var keepScreenAwake: Bool
+    
     private let userDefaults = UserDefaultsManager.shared
     private let revenueCat = RevenueCatService.shared
     
@@ -41,9 +43,17 @@ class SettingsViewModel: ObservableObject {
         
         self.selectedTheme = userDefaults.selectedTheme
         self.isPremium = userDefaults.isPremium
+        
+        self.keepScreenAwake = userDefaults.keepScreenAwake
     }
     
     // MARK: - Save Methods
+    
+    
+    func saveKeepScreenAwake(_ enabled: Bool) {
+        keepScreenAwake = enabled
+        userDefaults.keepScreenAwake = enabled
+    }
     
     func saveFocusDuration(_ value: Int) {
         focusDuration = value

@@ -26,8 +26,24 @@ struct SettingsView: View {
                             subtitle: "\(viewModel.focusDuration)m Focus"
                         )
                     }
+                    
+                    
+                    Toggle(isOn: $viewModel.keepScreenAwake) {
+                        SettingsRow(
+                            icon: "sun.max.fill",
+                            iconColor: .yellow,
+                            title: "Keep Screen Awake",
+                            subtitle: nil
+                        )
+                    }
+                    .tint(design.colors.primary)
+                    .onChange(of: viewModel.keepScreenAwake) { newValue in
+                        viewModel.saveKeepScreenAwake(newValue)
+                    }
                 } header: {
                     Text("Timer")
+                } footer: {
+                    Text("Prevents the screen from turning off during focus sessions")
                 }
                 
                 // Audio Settings Section
